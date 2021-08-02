@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.stream.IntStream;
 
 
-public class Proj3_CV {
+public class ConnComponents {
 	
 	public static int two = 2;
 	public static int one = 1;
