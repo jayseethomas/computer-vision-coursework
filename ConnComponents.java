@@ -96,7 +96,7 @@ public class ConnComponents {
 		int[][] zeroframedAry = new int[numrows+two][numCols+two];
 		
 		
-		Proj3_CV p3 = new Proj3_CV();
+		BoundedBoxes p3 = new BoundedBoxes();
 		p3.EQArray = new int[(numrows * numCols)/4];
 		for (int i = 0; i < p3.EQArray.length; i++) {
 			p3.EQArray[i] = i;
