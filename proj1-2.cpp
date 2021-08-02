@@ -1,3 +1,7 @@
+/* The histogram of an image is the statistic counting of pixel values in the input image, where hist[i] 
+tells how many pixels having value i in the input image. Given an image, 
+the task is to compute AND display the histogram of the input image.*/
+
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -51,6 +55,10 @@ int main(int argc, const char * argv[]) {
     
     
     }
+    
+    // process file from left to right, top to bottom. 
+    // get the pixel value at position [i][j]
+    // in the histogram add one to the value seen in position [i][j]
     
     for (int i = 0; i < maxVal+1; i++){
         if (hist[i] == 0 )
