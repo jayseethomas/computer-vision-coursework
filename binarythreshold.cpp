@@ -1,3 +1,10 @@
+/* The binary threshold operation is the simplest way to extract foreground objects in a given grey-scale image. 
+Given an image and a threshold value, the binary threshold operation is to transform pixels in the input image from grey-scale to binary values, where
+if imgIn(i, j) >= threshold value then
+result(i, j) -> 1
+else
+result(i, j) -> 0 */
+
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -33,11 +40,15 @@ int main(int argc, const char * argv[]) {
     outputFile << "1";
     outputFile << "\n";
     
-  
+    // get threshold from user
     
     int thres;
     cout << "Please enter an integer value for the threshold: ";
     cin >> thres;
+    
+    // process the input file from left to right and top to bottom
+    // if the pixel value at [i][j] is greater or equal to threshold, replace with a 1
+    // if it is less than replace with a 0
     
         for (int row = 0; row < numrows; row++)
         {
