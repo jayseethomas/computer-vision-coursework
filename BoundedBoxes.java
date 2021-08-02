@@ -1,11 +1,13 @@
-/* implement the 8-connected component algorithms*/
+/* Giving a labelled image file and its associated property file, your task is to draw bounding boxes on components in the labelled image file that are larger 
+than the threshold value (given by the user, based on size of component). Your program will not process an incorrect associated property 
+file; therefore, you must check the image header information on both input files.*/
 
 import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-public class ConnectedComponents {
+public class BoundedBoxes {
 
 	public static int two = 2;
 	public static int one = 1;
@@ -23,7 +25,7 @@ public class ConnectedComponents {
 	public int[][] labelledAry;
 
 	public static void main(String[] args) throws IOException {
-		ConnectedComponents p3 = new ConnectedComponents();
+		BoundedBoxes p3 = new BoundedBoxes();
 
 		int numCC;
 		int label;
