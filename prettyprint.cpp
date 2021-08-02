@@ -1,3 +1,5 @@
+/* Given an image, you are to convert all pixels with zero value in the image into blank spaces so that it is easier us to visualize the image.*/
+
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -35,6 +37,7 @@ int main(int argc, const char * argv[]) {
     outputFile << "\n";
     
     
+    // if it is a pixel with a value of 1 or greater, output the pixel value, else output a space.
     
     
     for (int row = 0; row < numrows; row++)
