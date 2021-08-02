@@ -1,10 +1,11 @@
+/* implement the 8-connected component algorithms*/
 
 import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-public class Prob3_1_CV {
+public class ConnectedComponents {
 
 	public static int two = 2;
 	public static int one = 1;
@@ -22,7 +23,7 @@ public class Prob3_1_CV {
 	public int[][] labelledAry;
 
 	public static void main(String[] args) throws IOException {
-		Prob3_1_CV p3 = new Prob3_1_CV();
+		ConnectedComponents p3 = new ConnectedComponents();
 
 		int numCC;
 		int label;
@@ -165,6 +166,8 @@ public class Prob3_1_CV {
 		}
 
 	}
+	
+	
 
 	private void drawCCBox(int label, int minrow, int mincol, int maxrow, int maxcol) {
 		for (int i = mincol - one; i < maxcol; i++) {
