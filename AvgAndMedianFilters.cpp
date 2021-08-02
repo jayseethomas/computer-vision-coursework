@@ -1,3 +1,7 @@
+
+/* two noise filter methods: 3X3 averaging and 3x3 median filters.
+*/
+
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -35,7 +39,7 @@ void loadImg(int** mirrorFramedAry){
     
 }
 
-
+// to accomodate a 3x3 median filtering you'll need to make a copy of the array and add extra rows and cols
 void mirrorFraming(int** mirrorFramedAry){
     
     
@@ -59,6 +63,8 @@ void mirrorFraming(int** mirrorFramedAry){
  
 }
 
+
+// load the 3 x 3 neighbor of a given pixel at position [i][j] and given the array
 void loadNeighbors (int i, int j, int** mirrorFramedAry) {
     
     int index = 0;
@@ -72,6 +78,7 @@ void loadNeighbors (int i, int j, int** mirrorFramedAry) {
     
 }
 
+// given the 3x3 neighbours window, find the average value
 int AVG(int neighborAry[9]){
     int sum = 0;
     for (int i=0; i<sizeOfNArray; i++)
@@ -81,6 +88,7 @@ int AVG(int neighborAry[9]){
 }
 
 
+// replace the pixel value at [i][j] with the average of all pixel values in the 3x3 window for an entire image 
 void computeAVG(int** mirrorFramedAry, int** avgAry){
     
     for (int i = 1; i < numrows+1; ++i)
@@ -117,7 +125,7 @@ void copyArray(int** mirrorFramedAry,int** avgAry){
     }
 }
 
-
+// replace the pixel value at [i][j] with the median of all pixel values in the 3x3 window for an entire image 
 void computeMedian(int** mirrorFramedAry, int** avgAry){
     
     for (int i = 1; i < numrows+1; ++i)
