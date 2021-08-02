@@ -1,3 +1,4 @@
+/* implement the 8-connected component algorithms*/
 
 import java.io.*;
 import java.util.Arrays;
@@ -200,7 +201,8 @@ public class Proj3_CV {
 	
 	}
 	
-	
+// use the EQAry to relabel the components
+// keep track the newMin newMax for the label image header as well as compute the property of each c.c.
 private void ConnectCCPass3(int[][] zeroframedAry, int[] eQArray, Property[] CCProperty) {
 	for (int row = 1; row < zeroframedAry.length-1; row++)   {
         for (int col = 1; col < zeroframedAry[0].length-1; col++){
@@ -270,6 +272,7 @@ private void ConnectCCPass3(int[][] zeroframedAry, int[] eQArray, Property[] CCP
 	}
 
 
+// Update EQAry of all non-zero neighbors to minLabel
 private void manageEQArray(int[] eQArray2) {
 		int temp = 1;
 		for (int i = 1; i < this.newLabel; i++) {
@@ -287,6 +290,15 @@ private void manageEQArray(int[] eQArray2) {
 	}
 
 
+//  scan zeroFramedAry R to L & B to T (inside the frame)
+// if zeroFramedAry (i, j) <= 0
+// repeat step 1
+// step 2 numNz -> loadNonZero(i, j, zeroFramedAry (i, j), minLabel, diffLabel)
+// if numNz > 0 && diffLabel > 1
+// zeroFramedAry (i, j) ß minLabel
+// updateEQ (minLabel)
+
+step 3: repeat step 1 to step 2 until all pixels are processed
 private void Connect8CCPass2(int[][] zeroframedAry, int newLabel2, int[] eQArray2) {
 	// System.out.println(this.minLabel);
 			for (int row = zeroframedAry.length-2; row>=0; row--)   {
@@ -346,7 +358,15 @@ private void printPretty(int[][] zeroframedAry, BufferedWriter bw) throws IOExce
 
 
 
-
+// scan left to right, top to bottom. if <=0 do nothing, if >=1 load the number of non-zero neighbours
+// case 1: if numNonZNeighs == 0
+// zeroFramedAry (i, j) -> newLabel
+// newLabel ++
+// case 2: if numNonZNeighs > 0 && diffLabel == 1
+// zeroFramedAry (i, j) -> minLabel
+// case 3: if numNonZNeighs > 0 && diffLabel > 1
+// zeroFramedAry (i, j) -> minLabel
+// updateEQ (minLabel)
 
 public void Connect8CCPass1(int[][] zeroframedAry, int newLabel, int[] EQArray) {
 		
@@ -384,6 +404,7 @@ public void Connect8CCPass1(int[][] zeroframedAry, int newLabel, int[] EQArray) 
 	}
 
 	
+	// Update EQAry of all non-zero neighbors to minLabel
 
 	private void updateEQ(int minLabel, int[] EQArray) {
 	for(int x = 0; x < NonZeroNeighbor.length; x++) {
@@ -392,6 +413,8 @@ public void Connect8CCPass1(int[][] zeroframedAry, int newLabel, int[] EQArray) 
 	
 }
 
+	// load non-zero neighbors of given pixel value [i][j] w/rt the pass
+	// returns the number of non-zero neighbours 
 
 	public int loadNonZero(int whichPass, int row, int col, int extra, int minLabel2, int diffLabel2, int[][] zeroframedAry) {
 		int num = 0;
